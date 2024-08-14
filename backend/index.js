@@ -7,7 +7,7 @@ const app=express()
 const errorMiddleware=require('./middlewares/error_middleware')  
 // console.log(process.env)
 const corsOption={
-    origin:"http://localhost:5173" ,   //this is clien(frontend) running link
+    origin:"http://localhost:5173" ,   //this is clien(frontend) running link we need to give info such as which is frontend port and which are methods we want to acccess.if we not soecify it then it give cors error
     methods:"GET,POST,PUT,DELETE,PATCH,HEAD ",
     credentials:true
 }
@@ -21,8 +21,16 @@ app.use('/api/data',require('./routes/service_route'))
 app.use("/api/admin",require("./routes/admin_route"))
 // app.use("/api/admin",require("./routes/admin_route"))
 app.use(errorMiddleware);                   //wee use it in validate_middleware file
-mongoconnect().then(()=>{      //in mangoconect file we used the promise so here we used the then()=>{}
-app.listen(3000,()=>{
-    console.log('server running on port 3000');
-})
-});
+// mongoconnect().then(()=>{      //in mangoconect file we used the promise so here we used the then()=>{}
+// app.listen(3000,()=>{
+//     console.log('server running on port 3000');
+// })
+// })
+console.log("njknk");
+const lis=async()=>{
+    await mongoconnect();
+    app.listen(3000,()=>{
+        console.log('server running on port 3000 jjhvjv');
+    })
+}
+lis();

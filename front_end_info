@@ -31,13 +31,13 @@ here we use browser loacl storage to store (click inspect and go to application.
 
 
 
-parent component->childA component->childB component->childC component so if we want to some data from parent component to childCnthen we pass throgh childA then to childB and then child c.so is it possible to pass data direct fro parent to childC.so answer is yes we use context api
+parent component->childA component->childB component->childC component so if we want to some data from parent component to childC then we pass throgh childA then to childB and then child c.so is it possible to pass data direct from parent to childC.so answer is yes we use context api
 React context api allow you to easily access data from different levels of component tree without pass the props to every level
 
 for data flow from parent to its child we used context api
 so in this we need to first create context 
 then we need provider (kind of function) used to provide(pass) data(context) to its descendants(childrens)
-and third part is consumer so whwn someone want to consume data then they need to become consumer
+and third part is consumer so when someone want to consume data then they need to become consumer
 
 we wrap the main app by this provider so that any component those want to data they can get by this context api
 and for logout function we define it in context api i.e in auth.jsx
@@ -55,4 +55,4 @@ we used the icons from react icon and for this we need to install it npm i react
 then go to its documentation click on the icon that is required there we get import statement copy it paste where we need and for use it simply use as component ex.import { FaUserAlt } from "react-icons/fa";   and use as <FaUserAlt />
 
 
-if user is not admin then automatically rrdirect to home page see admin-Layout file
+if user is not admin then automatically redirect to home page see admin-Layout file

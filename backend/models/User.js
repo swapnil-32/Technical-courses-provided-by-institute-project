@@ -4,7 +4,7 @@ const bcrypt=require('bcryptjs')
 const { Schema } = mongoose;
 const userschema=new Schema({
     username:{
-        type:String,
+        type:String, 
         required:true
     },
     email:{
@@ -28,6 +28,7 @@ const userschema=new Schema({
         type:Boolean,
         default:false
     },
+    enrolledCourses: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Service' }]
 })
 
 //tokens such as jwt are not stored in database/server it will stored on client side(ex.cookies). server is generating us token and give us
@@ -38,9 +39,10 @@ userschema.methods.generateToken=async function(){       //this jwt function we 
             {
                 userId:this._id.toString(),
                 email:this.email,                            //this first paraemeter is called payload of jwt.payload is user identity that we want to share  and payload is stored in string so we need to convert id into string rest all are already in string
-                isAdmin:this.isAdmin           //at time of verify only this userud,email and isadmin will display
+                isAdmin:this.isAdmin           //at time of verify only this userid,email and isadmin will display
             },
-            process.env.JWT_SECRET_KEY,                     //this second parameter called as secret key 
+            // process.env.JWT_SECRET_KEY,                     //this second parameter called as secret key 
+            "THISISSECRETEKEY",
             {
                 expiresIn:"30d"       //this last{} parameter is optional here it tells that it expires in 30 days
             }

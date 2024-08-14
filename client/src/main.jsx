@@ -10,7 +10,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
     <App />
     {/* <ToastContainer /> */}
-    <ToastContainer 
+    <ToastContainer      //this toastify tag is used for use toastify in any page
     position="top-right"
     autoClose={4581}
     hideProgressBar={false}

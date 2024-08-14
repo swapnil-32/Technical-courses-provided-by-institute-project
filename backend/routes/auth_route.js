@@ -30,4 +30,6 @@ router.route('/register').post(validate(validate_schema.signupschema),authcontro
 router.post('/login',validate(validate_schema.signinschema),authcontroller.login);
 // router.get("/user",authmiddleware,authcontroller.user)     //authmiddleware is middleware
 router.route('/user').get(authmiddleware,authcontroller.user) //authmiddleware is middleware  above line not work if we want to use middleware
+router.route('/enroll').post(authcontroller.enrollcourse)
+router.route('/enrolledcourses/:userid').get(authcontroller.enrolledcourses)
 module.exports=router;

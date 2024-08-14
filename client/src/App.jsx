@@ -8,13 +8,14 @@ import {Register} from "./pages/Register"
 import {Login} from "./pages/Login"
 // import {Logout} from "./pages/Logout"
 import { Logout } from "./pages/Logout";
-import {Navbar} from "./component/Navbar"
+import {Navbar} from "./component/Navbar";
 import { Footer } from "./component/footer";
 import {Error} from "./pages/Error"
 import { AdminLayout } from "./component/layouts/Admin-Layout";
 import { AdminUsers } from "./pages/AdminUsers";
 import { AdminContacts } from "./pages/AdminContacts";
 import { Adminupdate } from "./pages/Adminupdate";
+import { MyCourses } from "./pages/Mycourses";
 const App=()=>{
   return (
     <>
@@ -28,6 +29,7 @@ const App=()=>{
       <Route path="/service" element={<Service />}/>
       <Route path="/register" element={<Register />}/>
       <Route path="/login" element={<Login />}/>
+      <Route path="/my-courses" element={<MyCourses/>}/>
       <Route path="/logout" element={<Logout/>} />
       <Route path="*" element={<Error/>} />      {/*by this if user type anything in route(we get it by *) then we show error page*/}
       <Route path="/admin" element={<AdminLayout/>}>        {/*here we created nested routes i.e /admin/users and /admin/contacts*/}

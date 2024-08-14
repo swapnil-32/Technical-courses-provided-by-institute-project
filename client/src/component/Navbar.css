@@ -9,3 +9,31 @@ ul{
     display: flex;
     gap: 3rem;
 }
+/* nav ul li a.active { */        /*instead of below when we only add this then it willl only underline when we clicked*/
+    /* text-decoration: underline; */
+    /* border-bottom: 2px solid #fff; */
+/* } */
+
+nav ul li a {
+    color: #fff;  /* white color for navbar items */
+    text-decoration: none;
+    padding: 0.5rem;
+    position: relative;  /* For positioning the underline */
+    
+}
+
+nav ul li a::after {
+    content: '';
+    display: block;
+    width: 0;
+    height: 2px;
+    background: #fff;  /* Blue underline */
+    transition: width 0.3s ease;  /* Smooth underline transition */
+    position: absolute;
+    bottom: 0;
+    left: 0;
+}
+
+nav ul li a:hover::after, nav ul li a.active::after {
+    width: 100%;  /* Full width underline on hover and active */
+}

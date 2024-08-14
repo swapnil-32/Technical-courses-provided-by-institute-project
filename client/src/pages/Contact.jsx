@@ -14,7 +14,7 @@ export const Contact=()=>{
 // console.log(contact)
     const [userdata,setuserdata]=useState(true);
     const {user}=useAuth();
-    if(userdata && user){            //when initialy page load then usedata is always true 
+    if( userdata &&user){            //when initialy page load then userdata is always true 
         setcontact({
             username:user.username,             
             email:user.email,                  //by this we are filling/giving the default loged in user details

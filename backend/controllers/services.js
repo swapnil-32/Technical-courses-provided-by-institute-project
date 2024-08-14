@@ -11,4 +11,18 @@ try {
     console.log(`services ${error}`);
 }
 }
-module.exports=services;
+const servicebyid=async(req,res)=>{
+    const id=req.params.id
+    try{
+        const response=await Service.find({_id:id})
+        if(!response){
+            res.json({msg:"no course available"})
+            return;
+        }
+        res.json({msg:response})
+    }
+    catch(error){
+        console.log(`services ${error}`)
+    }
+}
+module.exports={services,servicebyid};

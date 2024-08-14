@@ -19,7 +19,7 @@ export const Navbar=()=>{
                         <li ><a href="/register">Register</a></li>
                         <li ><a href="/login">login</a></li> */}
 
-                        <li><NavLink to="/">Home</NavLink></li>
+                        <li><NavLink to="/" >Home</NavLink></li>
                         <li><NavLink to="/about">About Us</NavLink></li>
                         <li><NavLink to="/contact">Contact</NavLink></li>
                         <li><NavLink to="/service">Service</NavLink></li>

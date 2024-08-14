@@ -8,5 +8,4 @@ export const Logout=()=>{
     },[LogoutUser])        //this Logout function is defined in auth.jsx file and we imported above
     
     return <Navigate to="/login" />
-     
 }

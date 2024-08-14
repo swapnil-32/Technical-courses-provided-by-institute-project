@@ -4,6 +4,7 @@ export const AuthContext=createContext();       //1st part of context api i.e co
 export const AuthProvider=({children})=>{       //this is 2nd part of context api
     const [token,setToken]=useState(localStorage.getItem("token"));     //useful for logout functionality
     const [user,setuser]=useState("");
+    const [userid,setuserid]=useState("")
     const[isloading,setisloading]=useState(true);    //this used in admin-Layout file //this state isrequired becouse when initialy page load then sometime data is comming undefine so we need wait till it load so for that we used this
     const [services,setservices]=useState("")   //to store service data of database
     const authorizationtoken=`Bearer ${token}`;  //becouse need this in other pages also so we pass this variable from this file so anyone acan access becouse this file is context api
@@ -21,9 +22,9 @@ export const AuthProvider=({children})=>{       //this is 2nd part of context ap
     }
 
 //jwt authentication-to get data of currently loged in user    
-const userAuthentication=async()=>{           //here it act like middleware so on any pafe if we need loge in user data then we can get it only we need to import useAuth see below function useAuth and also front_end_info file to see that how useAuth works
+const userAuthentication=async()=>{           //here it act like middleware so on any page, if we need log in user data then we can get it only we need to import useAuth see below function useAuth and also front_end_info file to see that how useAuth works
     try {
-        setisloading(true);   //initialy we set it as loading=true becaouse after fetching our actual data will come so after successfully fetching we seat isloading=false see in if condition
+        setisloading(true);   //initialy we set it as loading=true becaouse after fetching our actual data will come so after successfully fetching we set isloading=false see in if condition
        const response=await fetch("http://localhost:3000/api/auth/user",{
         method:"GET",
         headers:{
@@ -34,6 +35,8 @@ const userAuthentication=async()=>{           //here it act like middleware so o
         const data=await response.json();
         console.log("user data",data.userdata);
         setuser(data.userdata);
+        setuserid(data.userdata._id)
+        console.log(userid)   //here it will not immediatly update user becouse of asynchronous nature
         setisloading(false);
        } 
        else{
@@ -73,7 +76,7 @@ useEffect(()=>{
 //     getservices()
 // },[])
 
-    return <AuthContext.Provider value={{ isLogedIn,storetokenInLs,LogoutUser,user,services,authorizationtoken,isloading  }} >      
+    return <AuthContext.Provider value={{ isLogedIn,storetokenInLs,LogoutUser,user,userid,services,authorizationtoken,isloading  }} >      
         {children}
     </AuthContext.Provider>
 }
@@ -82,7 +85,7 @@ export const useAuth=()=>{             //this is third part of context api i.e c
     // return useContext(AuthContext);       //this also work but many time we not wrap authprovider in main.jsx (main) file so below line will tellus that
     const authContextValue=useContext(AuthContext);
     if(!authContextValue){
-        throw new Error("useauth used outside of provider");
+        throw new Error("useAuth used outside of provider");    //useAuth is above function name
     }
     return authContextValue;
 }

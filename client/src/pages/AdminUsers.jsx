@@ -66,6 +66,7 @@ export const AdminUsers = () => {
             <tbody>
               {users.map((currUser, index) => {
                 // return <h2 key={index}>{currUser.username}</h2>
+                if(!currUser.isAdmin){
                 return (
                 <tr key={index}>
                   <td>{currUser.username}</td>
@@ -77,6 +78,7 @@ export const AdminUsers = () => {
                   <td><button onClick={()=>deleteuser(currUser._id)}>Delete</button></td>
                 </tr>
                 )
+              }
               })}
             </tbody>
           </table>

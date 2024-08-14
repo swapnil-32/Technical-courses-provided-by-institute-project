@@ -68,4 +68,40 @@ const user=async (req,res)=>{
     }
 }
 
-module.exports={home,register,login,user};
+const enrollcourse = async (req, res) => {
+    const { serviceId, userId } = req.body;
+  console.log(userId)
+  if (!serviceId || !userId) {
+    return res.status(400).json({ msg: "Service ID and User ID are required" });
+}
+    try {
+      const user = await User.findById(userId);
+      if (!user) {
+        return res.status(404).json({ msg: "User not found" });
+      }
+  
+      if (!user.enrolledCourses.includes(serviceId)) {
+        
+        user.enrolledCourses.push(serviceId);
+        await user.save();
+      }
+  
+      res.status(200).json({ msg: "Enrolled successfully!" });
+    } catch (error) {
+      console.error(error);
+      res.status(500).json({ msg: error });
+    }
+  };
+  const enrolledcourses=async(req,res)=>{
+    const userid=req.params.userid
+    console.log(userid)
+    try{
+        const user=await User.findOne({_id:userid})
+        console.log("hii",user)
+        res.status(200).json(user)
+    }
+    catch(error){
+        res.status(500).json({msg:"error"})
+  }
+}
+module.exports={home,register,login,user,enrollcourse,enrolledcourses};
