@@ -21,16 +21,16 @@ app.use('/api/data',require('./routes/service_route'))
 app.use("/api/admin",require("./routes/admin_route"))
 // app.use("/api/admin",require("./routes/admin_route"))
 app.use(errorMiddleware);                   //wee use it in validate_middleware file
-// mongoconnect().then(()=>{      //in mangoconect file we used the promise so here we used the then()=>{}
-// app.listen(3000,()=>{
-//     console.log('server running on port 3000');
-// })
-// })
-console.log("njknk");
-const lis=async()=>{
-    await mongoconnect();
-    app.listen(3000,()=>{
-        console.log('server running on port 3000 jjhvjv');
-    })
-}
-lis();
+mongoconnect().then(()=>{      //in mangoconect file we used the promise so here we used the then()=>{}
+app.listen(3000,()=>{
+    console.log('server running on port 3000');
+})
+})
+// console.log("njknk");
+// const lis=async()=>{
+//     await mongoconnect();
+//     app.listen(3000,()=>{
+//         console.log('server running on port 3000');
+//     })
+// }
+// lis();

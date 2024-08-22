@@ -11,10 +11,7 @@ const url=process.env.MONGODB_URI;
 console.log(url)
 const mongoconnect=async()=>{
     try{
-        await mongoose.connect("mongodb://127.0.0.1:27017/mern",{
-      useNewUrlParser: true,
-      useUnifiedTopology: true,
-    })    //atlas is not working so above url is not used
+        await mongoose.connect("mongodb://127.0.0.1:27017/mern")   //atlas is not working so above url is not used
         console.log('MongoDB connected successfully');
     }
     catch(error){

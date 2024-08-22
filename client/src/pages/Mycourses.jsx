@@ -61,21 +61,22 @@ export const MyCourses = () => {
   }, [userid, authorizationToken]);
 
   return (
-    <div className="container">
+    <div className="container4">
       <h1 className="main_heading">My Courses</h1>
-      <div className="grid grid-three-cols">
+      {/* <div className="grid grid-three-cols"> */}
+      <div className="container3">
         {enrolledcourses.map((course, idx) => (
           <div className="card" key={idx}>
             <div className="card_img">
-              <img src="/images/service.jpeg" alt="course info" width="250" />
+              <img src={`/images/${course.image}.jpeg`} alt="course info" width="250" />
             </div>
             <div className="card_details">
               <h2>{course.service}</h2>
               <p>{course.description}</p>
-              <div className="provider">
+              {/* <div className="provider">
                 <p>{course.provider}</p>
-              </div>
-              <p className="enroll_button">Enrolled - &#8377; {course.price}</p>
+              </div> */}
+              <button className="enrolled_button">Enrolled</button>
             </div>
           </div>
         ))}

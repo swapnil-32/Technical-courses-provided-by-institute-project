@@ -69,7 +69,10 @@ const user=async (req,res)=>{
 }
 
 const enrollcourse = async (req, res) => {
-    const { serviceId, userId } = req.body;
+    console.log(req.body)
+    // const { serviceId, userId } = req.body;
+    const serviceId=req.body.serviceId;
+    const userId=req.body.userId
   console.log(userId)
   if (!serviceId || !userId) {
     return res.status(400).json({ msg: "Service ID and User ID are required" });

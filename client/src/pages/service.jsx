@@ -23,7 +23,7 @@ export const Service = () => {
 
 const handlesubmit = async ( service) => {
     //     console.log(service.service)
-    console.log(userid)
+    console.log(userid,"kjhgj")
     // console.log(service._id)
     if (isLogedIn) {
       if (window.confirm(`Are you sure you want to enroll in ${service.service}?`)) {
@@ -34,13 +34,14 @@ const handlesubmit = async ( service) => {
               "Content-Type": "application/json",
               Authorization: authorizationToken,
             },
-            body: JSON.stringify({ serviceId:service._id, userId: userid }),
+            body: JSON.stringify({ serviceId:service._id, userId:userid }),
           });
 
           if (response.ok) {
             const data = await response.json();
             toast.success(data.msg);
           } else {
+            console.log(response)
             toast.error("Failed to enroll");
           }
         } catch (error) {
@@ -64,10 +65,10 @@ const handlesubmit = async ( service) => {
           </button>
         </div>
 
-        <div className="container2 grid grid-three-cols">
+        <div className="container3">
           {services.map((currelement, idx) => {
             //services is array of documents(object) of service database see in auth.jsx file
-            const {_id, price, provider, service, description } = currelement; //we destruct the currelement object
+            const {_id, price, provider, service, description,image } = currelement; //we destruct the currelement object
 
             return (
             //   <div className="card">
@@ -90,19 +91,21 @@ const handlesubmit = async ( service) => {
             <div className="card" key={idx}>
             <div className="card_img">
               <img
-                src="/images/service.jpeg"
+                src={`/images/${image}.jpeg`}
                 alt="service info"
                 width="250"
               />
             </div>
             <div className="card_details">
               <h2>{service}</h2>
+              {/* <div className="des"> */}
               <p>{description}</p>
-              <div className="provider">
+              {/* </div> */}
+              {/* <div className="provider">
                 <p>{provider}</p>
-              </div>
+              </div> */}
               <button className="enroll_button" onClick={()=>handlesubmit({_id,service})}>
-                Enroll - &#8377;    {price}
+                Enroll - &#8377;   <span>{price}</span> free
               </button>
             </div>
           </div>

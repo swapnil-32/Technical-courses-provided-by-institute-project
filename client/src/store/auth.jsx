@@ -20,7 +20,6 @@ export const AuthProvider=({children})=>{       //this is 2nd part of context ap
         setToken("");
         return localStorage.removeItem("token");
     }
-
 //jwt authentication-to get data of currently loged in user    
 const userAuthentication=async()=>{           //here it act like middleware so on any page, if we need log in user data then we can get it only we need to import useAuth see below function useAuth and also front_end_info file to see that how useAuth works
     try {

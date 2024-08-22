@@ -3,17 +3,17 @@ export const Home = () =>{
     <section className="uppersection">
         <div className="upper_container">
             <div className="content">
-                <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Omnis, sint!</p>
-                <h1>welcome to my portfolio</h1>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Soluta libero quos inventore, amet similique vel quod, assumenda voluptate sed, modi unde cum nisi laborum est quis placeat consequuntur velit veniam.</p>
+                <p>we believe in the power of technology to shape the future</p>
+                <h1>welcome to Viit</h1>
+                <p>Our mission is to provide world-class technical education and services that equip our students with the skills and knowledge they need to excel in the ever-evolving tech industry.</p>
             </div>
             <div className="btncontainer">
                 <a href="/contact"><button className="btn">contact now</button></a>
-                <a href=""><button className="btn secondbtn">learn more</button></a>
+                <a href="http://www.viit.ac.in"  target="blank"><button className="btn secondbtn">learn more</button></a>
             </div>
         </div>
         <div className="imagecontainer">
-            <img src="/images/me.jpg" alt="" height="400" width="400"/>
+            <img src="/images/viit.png" alt=""/>
         </div>
     </section>
 
